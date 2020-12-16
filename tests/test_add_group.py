@@ -1,8 +1,11 @@
 #-*- coding: utf-8 -*-
 
+from selenium.webdriver.firefox.webdriver import WebDriver
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium import webdriver
+driver = webdriver.Firefox(executable_path = '/Users/alex/Documents/GitHub/python_training/envs/bin/geckodriver')
 import unittest
 
-from selenium.webdriver.firefox import webdriver
 
 class UntitledTestCase(unittest.TestCase):
     def setUp(self):
