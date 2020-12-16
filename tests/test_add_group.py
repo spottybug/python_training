@@ -1,16 +1,16 @@
 #-*- coding: utf-8 -*-
 
 from selenium.webdriver.firefox.webdriver import WebDriver
-from selenium.webdriver.common.action_chains import ActionChains
+#from selenium.webdriver.common.action_chains import ActionChains
 from selenium import webdriver
-driver = webdriver.Firefox(executable_path = '/Users/alex/Documents/GitHub/python_training/envs/bin/geckodriver')
+browser = webdriver.Firefox(executable_path = '/Users/alex/anaconda3/bin/geckodriver')
 import unittest
 
 
 class UntitledTestCase(unittest.TestCase):
     def setUp(self):
         self.wd = WebDriver()
-        self.wd.implicitly_wait(60)
+        self.wd.implicitly_wait(30)
 
     def test_untitled_test_case(self):
         wd = self.wd
