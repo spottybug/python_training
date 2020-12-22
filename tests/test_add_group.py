@@ -14,7 +14,7 @@ class UntitledTestCase(unittest.TestCase):
     def test_untitled_test_case(self):
         wd = self.wd
         # open home page
-        wd.get("http://localhost/addressbook/index.php")
+        self.open_home_page(wd)
         # login
         wd.find_element_by_name("user").clear()
         wd.find_element_by_name("user").send_keys("admin")
@@ -43,7 +43,8 @@ class UntitledTestCase(unittest.TestCase):
         # logout
         wd.find_element_by_link_text("Logout").click()
 
-
+    def open_home_page(self, wd):
+        wd.get("http://localhost/addressbook/index.php")
 
     def tearDown(self):
         self.wd.quit()
