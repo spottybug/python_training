@@ -1,7 +1,6 @@
 #-*- coding: utf-8 -*-
 
 from selenium.webdriver.firefox.webdriver import WebDriver
-#from selenium.webdriver.common.action_chains import ActionChains
 from selenium import webdriver
 browser = webdriver.Firefox(executable_path = '/Users/alex/anaconda3/bin/geckodriver')
 import unittest
