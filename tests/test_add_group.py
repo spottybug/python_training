@@ -11,7 +11,10 @@ class UntitledTestCase(unittest.TestCase):
         self.wd = WebDriver()
         self.wd.implicitly_wait(30)
 
-    def test_untitled_test_case(self):
+    def open_home_page(self, wd):
+        wd.get("http://localhost/addressbook/index.php")
+
+    def test_add_group(self):
         wd = self.wd
         # open home page
         self.open_home_page(wd)
@@ -43,8 +46,7 @@ class UntitledTestCase(unittest.TestCase):
         # logout
         wd.find_element_by_link_text("Logout").click()
 
-    def open_home_page(self, wd):
-        wd.get("http://localhost/addressbook/index.php")
+
 
     def tearDown(self):
         self.wd.quit()
