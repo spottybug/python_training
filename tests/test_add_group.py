@@ -28,16 +28,16 @@ class UntitledTestCase(unittest.TestCase):
     def init_group_creation(self, wd):
         wd.find_element_by_name("new").click()
 
-    def fill_group_form(self, wd):
+    def fill_group_form(self, wd, name, header, footer):
         wd.find_element_by_name("group_name").click()
         wd.find_element_by_name("group_name").clear()
-        wd.find_element_by_name("group_name").send_keys("qwerty")
+        wd.find_element_by_name("group_name").send_keys("%s" % name)
         wd.find_element_by_name("group_header").click()
         wd.find_element_by_name("group_header").clear()
-        wd.find_element_by_name("group_header").send_keys("qwerty")
+        wd.find_element_by_name("group_header").send_keys("%s" % header)
         wd.find_element_by_name("group_footer").click()
         wd.find_element_by_name("group_footer").clear()
-        wd.find_element_by_name("group_footer").send_keys("qwerty")
+        wd.find_element_by_name("group_footer").send_keys("%s" % footer)
 
     def submit_group_creation(self, wd):
         wd.find_element_by_name("submit").click()
@@ -54,7 +54,7 @@ class UntitledTestCase(unittest.TestCase):
         self.login(wd, username="admin", password="secret")
         self.open_groups_page(wd)
         self.init_group_creation(wd)
-        self.fill_group_form(wd)
+        self.fill_group_form(wd, name="qwerty", header="qwerty", footer="qwerty")
         self.submit_group_creation(wd)
         self.return_to_groups_page(wd)
         self.logout(wd)
