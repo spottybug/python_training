@@ -8,6 +8,7 @@ browser = webdriver.Firefox(executable_path = '/Users/alex/anaconda3/bin/geckodr
 from selenium.webdriver.support.ui import Select
 
 import unittest
+from data_contact import Data_contact
 
 
 class test_new_contact(unittest.TestCase):
@@ -28,35 +29,32 @@ class test_new_contact(unittest.TestCase):
     def open_new_contact_form(self, wd):
         wd.find_element_by_name("firstname").clear()
 
-    def fill_new_contact_form(self, wd, firstname="John", middlename="James", lastname="Grady", nickname="john2020",
-                              company="Google LLC", address="Mountain View, California, USA", home_phone="123456789",
-                              mobile_phone="123456789", wok_phone="123456789", email="email@domain.com",
-                              email2="email2@domain.com", email3="email3@domain.com", homepage="google.com"):
-        wd.find_element_by_name("firstname").send_keys("%s" % firstname)
+    def fill_new_contact_form(self, wd, data_contact):
+        wd.find_element_by_name("firstname").send_keys("%s" % data_contact.firstname)
         wd.find_element_by_name("middlename").clear()
-        wd.find_element_by_name("middlename").send_keys("%s" % middlename)
+        wd.find_element_by_name("middlename").send_keys("%s" % data_contact.middlename)
         wd.find_element_by_name("lastname").clear()
-        wd.find_element_by_name("lastname").send_keys("%s" % lastname)
+        wd.find_element_by_name("lastname").send_keys("%s" % data_contact.lastname)
         wd.find_element_by_name("nickname").clear()
-        wd.find_element_by_name("nickname").send_keys("%s" % nickname)
+        wd.find_element_by_name("nickname").send_keys("%s" % data_contact.nickname)
         wd.find_element_by_name("company").clear()
-        wd.find_element_by_name("company").send_keys("%s" % company)
+        wd.find_element_by_name("company").send_keys("%s" % data_contact.company)
         wd.find_element_by_name("address").clear()
-        wd.find_element_by_name("address").send_keys("%s" % address)
+        wd.find_element_by_name("address").send_keys("%s" % data_contact.address)
         wd.find_element_by_name("home").clear()
-        wd.find_element_by_name("home").send_keys("%s" % home_phone)
+        wd.find_element_by_name("home").send_keys("%s" % data_contact.home_phone)
         wd.find_element_by_name("mobile").clear()
-        wd.find_element_by_name("mobile").send_keys("%s" % mobile_phone)
+        wd.find_element_by_name("mobile").send_keys("%s" % data_contact.mobile_phone)
         wd.find_element_by_name("work").clear()
-        wd.find_element_by_name("work").send_keys("%s" % wok_phone)
+        wd.find_element_by_name("work").send_keys("%s" % data_contact.work_phone)
         wd.find_element_by_name("email").clear()
-        wd.find_element_by_name("email").send_keys("%s" % email)
+        wd.find_element_by_name("email").send_keys("%s" % data_contact.email)
         wd.find_element_by_name("email2").clear()
-        wd.find_element_by_name("email2").send_keys("%s" % email2)
+        wd.find_element_by_name("email2").send_keys("%s" % data_contact.email2)
         wd.find_element_by_name("email").clear()
-        wd.find_element_by_name("email").send_keys("%s" % email3)
+        wd.find_element_by_name("email").send_keys("%s" % data_contact.email3)
         wd.find_element_by_name("homepage").clear()
-        wd.find_element_by_name("homepage").send_keys("%s" % homepage)
+        wd.find_element_by_name("homepage").send_keys("%s" % data_contact.homepage)
         Select(wd.find_element_by_name("bday")).select_by_visible_text("1")
         Select(wd.find_element_by_name("bmonth")).select_by_visible_text("January")
         wd.find_element_by_name("byear").clear()
@@ -76,7 +74,9 @@ class test_new_contact(unittest.TestCase):
         self.open_home_page(wd)
         self.login(wd, "admin", "secret")
         self.open_new_contact_form(wd)
-        self.fill_new_contact_form(wd)
+        self.fill_new_contact_form(wd, Data_contact(firstname="John", middlename="James", lastname="Grady", nickname="john2020", company="Google LLC",
+                                   address="Mountain View, California, USA", home_phone="123456789", mobile_phone="123456789", work_phone="123456789",
+                                   email="email@domain.com", email2="email2@domain.com", email3="email3@domain.com", homepage="google.com"))
         self.submit_creation(wd)
         self.back_to_home_page(wd)
         self.logout(wd)
