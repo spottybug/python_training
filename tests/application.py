@@ -1,12 +1,3 @@
-# from selenium.webdriver.firefox.webdriver import WebDriver
-# from selenium import webdriver
-#browser = webdriver.Firefox(executable_path = '/Users/alex/anaconda3/bin/geckodriver')
-
-
-#from selenium.webdriver.firefox.webdriver import WebDriver
-import selenium.webdriver.remote
-from selenium.webdriver.firefox import webdriver
-from selenium import webdriver
 from selenium.webdriver.remote import webdriver
 
 
